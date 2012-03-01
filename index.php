@@ -36,10 +36,11 @@ if ($api_markasused['signed']){
     exit;
   }
 }
-
+$pluginconf = get_plugin_config('api_markasused');
+$fieldid = $pluginconf['markasused_field'];
 // theres no nice api we can use to save so i stole the fundementals from save_resource_data();
-sql_query("DELETE FROM resource_data WHERE resource = $resource AND resource_type_field = 128");
+sql_query("DELETE FROM resource_data WHERE resource = $resource AND resource_type_field = $fieldid");
 
-sql_query("insert into resource_data(resource,resource_type_field,value) values($resource, 128 ,'" . escape_check(getval("url", "")) ."')");
+sql_query("insert into resource_data(resource,resource_type_field,value) values($resource, $fieldid ,'" . escape_check(getval("url", "")) ."')");
 
 update_xml_metadump($resource);		

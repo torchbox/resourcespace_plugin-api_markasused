@@ -2,3 +2,4 @@ name    : api_markasused
 author  : C Nesbitt-Smith
 version : 0.1
 desc    : API to allow the marking of resources as being in use somewhere
+config_url: /plugins/api_markasused/config.php
